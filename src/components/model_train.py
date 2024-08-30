@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten
+from tensorflow.keras import layers
 from tensorflow.keras.callbacks import ReduceLROnPlateau
 import os
 
@@ -24,23 +24,23 @@ class ModelTrainer:
         lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=5, min_lr=1e-6)
 
 
-        model = Sequential()
-        
-        output_units = len(os.listdir('data')) #numbner of labels in our data
-
-        model.add(Conv2D(16, (3,3), 1, activation='relu'))
-        model.add(MaxPooling2D())
-
-        model.add(Conv2D(32, (3,3), 1, activation='relu'))
-        model.add(MaxPooling2D())
-
-        model.add(Conv2D(16, (3,3), 1, activation='relu'))
-        model.add(MaxPooling2D())
-
-        model.add(Flatten())
-
-        model.add(Dense(256, activation='relu'))
-        model.add(Dense(units=output_units, activation='softmax'))
+        model = Sequential([
+            layers.Conv2D(32, kernel_size = (3,3), activation='relu', input_shape=(256,256,3)),
+            layers.MaxPooling2D((2, 2)),
+            layers.Conv2D(64,  kernel_size = (3,3), activation='relu'),
+            layers.MaxPooling2D((2, 2)),
+            layers.Conv2D(64,  kernel_size = (3,3), activation='relu'),
+            layers.MaxPooling2D((2, 2)),
+            layers.Conv2D(64, (3, 3), activation='relu'),
+            layers.MaxPooling2D((2, 2)),
+            layers.Conv2D(64, (3, 3), activation='relu'),
+            layers.MaxPooling2D((2, 2)),
+            layers.Conv2D(64, (3, 3), activation='relu'),
+            layers.MaxPooling2D((2, 2)),
+            layers.Flatten(),
+            layers.Dense(64, activation='relu'),
+            layers.Dense(units= len(os.listdir('data')), activation='softmax'),
+        ])
 
         model.compile('adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
