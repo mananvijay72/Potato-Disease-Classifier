@@ -1,0 +1,8 @@
+numpy
+matplotlib
+tensorflow
+opencv-python
+ipykernel
+streamlit
+fastapi
+uvicorn
