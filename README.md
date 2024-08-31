@@ -50,8 +50,5 @@ The model achieves high accuracy in predicting the disease class from potato lea
 - Recall: 99%
 
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Acknowledgments
+## Acknowledgments
 Special thanks to the open-source community for providing tools and resources to make this project possible.
