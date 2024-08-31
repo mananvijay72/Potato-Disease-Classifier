@@ -3,6 +3,8 @@
 ## Project Overview
 This project aims to classify potato leaf images into three categories: **Early Blight**, **Late Blight**, and **Healthy**. Using a Convolutional Neural Network (CNN) built with TensorFlow, the model predicts the condition of the potato leaf from the input image. The web application interface is created using FastAPI, with basic HTML and CSS for the frontend.
 
+![plot](https://github.com/mananvijay72/Potato-Disease-Classifier/blob/main/gitimages/prediction.PNG)
+
 ## Problem Statement
 The goal is to predict the disease affecting a potato leaf based on its image. The model identifies whether the leaf is affected by Early Blight, Late Blight, or is Healthy.
 
